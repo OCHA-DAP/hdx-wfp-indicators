@@ -1,3 +1,2 @@
 # hdx-wfp-indicators
 
-£
