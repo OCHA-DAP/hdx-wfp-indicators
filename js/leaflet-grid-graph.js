@@ -130,7 +130,7 @@ var lg =  {
 
             var _parent = this;
 
-            var baselayer = L.tileLayer('https://data.hdx.rwlabs.org/mapbox-base-tiles/{z}/{x}/{y}.png', {
+            var baselayer = L.tileLayer('https://data.humdata.org/mapbox-base-tiles/{z}/{x}/{y}.png', {
                 
             });
 
