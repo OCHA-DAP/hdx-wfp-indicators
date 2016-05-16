@@ -12,7 +12,7 @@ var config = {};
     ];
 
 var dataStoreID = '748b40dd-7bd3-40a3-941b-e76f0bfbe0eb';
-var apiURL = 'https://data.humdata.org/api/3/action/datastore_search_sql';
+var apiURL = 'https://data.hdx.rwlabs.org/api/3/action/datastore_search_sql';
 
 var percentAccessor = function(d){
     if(isNaN(d) || d==null){
@@ -273,7 +273,7 @@ function loadData(countryID){
     $.ajax({
       type: 'GET',
       dataType: 'json',
-      url: 'https://data.humdata.org/api/action/datastore_search_sql?sql=SELECT%20CASE%20WHEN%20%22StDev%22%20IS%20NULL%20OR%20(%22StDev%22%20IS%20NOT%20NULL%20AND%20%22Variable%22%20LIKE%20%27%25=%25%27%20AND%20(COALESCE(%22CnfIntvHi%22,1)-COALESCE(%22CnfIntvLo%22,0))/%22Mean%22%3C=0.12)%20OR%20(%22StDev%22%20IS%20NOT%20NULL%20AND%20%22Variable%22%20NOT%20LIKE%20%27%25=%25%27%20AND%20(COALESCE(%22CnfIntvHi%22,%22Pctl95%22)-COALESCE(%22CnfIntvLo%22,0))/%22Mean%22%3C=0.12)%20THEN%20%22Mean%22%20ELSE%20NULL%20END%20as%20%22MEAN%22,%20%22Median%22,%20%22ADM1_CODE%22,%20%22SvyDate%22,%20%22Variable%22%20FROM%20%22748b40dd-7bd3-40a3-941b-e76f0bfbe0eb%22%20WHERE%20%22ADM0_CODE%22=%27269%27%20AND%20%22ADM1_CODE%22%20IS%20NOT%20NULL%20AND%20%22ADM2_CODE%22%20IS%20NULL%20AND%20%22ADM3_CODE%22%20IS%20NULL%20ORDER%20BY%20character_length(%22SvyYear%22::char),%20%22SvyYear%22,character_length(%22SvyMonthNum%22::char),%22SvyMonthNum%22',
+      url: 'https://data.hdx.rwlabs.org/api/action/datastore_search_sql?sql=SELECT%20CASE%20WHEN%20%22StDev%22%20IS%20NULL%20OR%20(%22StDev%22%20IS%20NOT%20NULL%20AND%20%22Variable%22%20LIKE%20%27%25=%25%27%20AND%20(COALESCE(%22CnfIntvHi%22,1)-COALESCE(%22CnfIntvLo%22,0))/%22Mean%22%3C=0.12)%20OR%20(%22StDev%22%20IS%20NOT%20NULL%20AND%20%22Variable%22%20NOT%20LIKE%20%27%25=%25%27%20AND%20(COALESCE(%22CnfIntvHi%22,%22Pctl95%22)-COALESCE(%22CnfIntvLo%22,0))/%22Mean%22%3C=0.12)%20THEN%20%22Mean%22%20ELSE%20NULL%20END%20as%20%22MEAN%22,%20%22Median%22,%20%22ADM1_CODE%22,%20%22SvyDate%22,%20%22Variable%22%20FROM%20%22748b40dd-7bd3-40a3-941b-e76f0bfbe0eb%22%20WHERE%20%22ADM0_CODE%22=%27269%27%20AND%20%22ADM1_CODE%22%20IS%20NOT%20NULL%20AND%20%22ADM2_CODE%22%20IS%20NULL%20AND%20%22ADM3_CODE%22%20IS%20NULL%20ORDER%20BY%20character_length(%22SvyYear%22::char),%20%22SvyYear%22,character_length(%22SvyMonthNum%22::char),%22SvyMonthNum%22',
       success: function(data) {
           loadGeo(countryID,data.result.records);
       }
